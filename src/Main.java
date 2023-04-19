@@ -3,4 +3,5 @@ public class Main {
         System.out.println("Hello world!");
     }
     //first commit
+    //I've added third commit after the second one was reset.
 }
