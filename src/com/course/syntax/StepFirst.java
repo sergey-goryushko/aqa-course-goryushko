@@ -1,3 +1,5 @@
+package com.course.syntax;
+
 public class StepFirst {
     public static void main(String [] args) {
         int i = 123;
@@ -8,8 +10,6 @@ public class StepFirst {
         short s = - 32;
         long l = 111111111L;
         boolean hz = true;
-        System.out.print(i + " " + f + " " + c + " " + b + " " + s + " " + l + " ");
-        System.out.print(d + " ");
-        System.out.print(hz);
+        System.out.print(i + " " + d + " " + f + " " + c + " " + b + " " + s + " " + l + " " + hz);
     }
 }

@@ -1,3 +1,5 @@
+package com.course.syntax;
+
 import java.util.Scanner;
 
 public class Loops {
@@ -7,7 +9,7 @@ public class Loops {
         Loops loops = new Loops();
         loops.printValue();
         loops.factorial();
-        loops.largestIntegerDivisor();
+        loops.largestDivisor();
         loops.requestAge();
 
     }
@@ -45,22 +47,15 @@ public class Loops {
 
     }
 
-    public void largestIntegerDivisor() {
+    public void largestDivisor() {
         System.out.println("Enter you number to find out its largest integer divisor.");
         int givenValue = scanner.nextInt();
-        int largestDivisor;
-        for (largestDivisor = 1; largestDivisor < givenValue; largestDivisor++) {
-            if (givenValue % 2 == 0) {
-                int result1 = givenValue / 2;
-                System.out.println(result1);
-                break;
-            } else if (givenValue % 3 == 0) {
-                int result2 = givenValue / 3;
-                System.out.println(result2);
-                break;
-            }
+        int largestDivisor = 0;
+        for (int i = 1; i <= givenValue / 2; i++) {
+            if (givenValue % i == 0)
+                largestDivisor = i;
         }
-        System.out.println("\n");
+        System.out.println(largestDivisor + "\n");
     }
 
 
