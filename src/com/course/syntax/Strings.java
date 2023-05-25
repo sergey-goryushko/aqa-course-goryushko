@@ -18,8 +18,10 @@ public class Strings {
     public void deleteSpacesAndMakeLineInUppercase() {
         System.out.println("Enter your sentence below, please:");
         String text = scanner.nextLine();
-        String alteredLine = text.trim().toUpperCase();
-        System.out.println("Here is we have the string without blanks and wrote with an uppercase: " + alteredLine + "\n");
+        char [] alteredLine = text.trim().replace(" ", "").toUpperCase().toCharArray();
+        for (char a: alteredLine) {
+            System.out.println(a);
+        }
     }
 
     public void checkThatSentenceContainsWordJava() {

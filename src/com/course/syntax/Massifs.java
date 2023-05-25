@@ -1,6 +1,5 @@
 package com.course.syntax;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,26 +20,30 @@ public class Massifs {
         int sum = 0;
         int average;
         for (int i = 0; i < givenNumbers.length; i++) {
-            givenNumbers[i] = i + 1;
+            givenNumbers[i] = i;
         }
         for (int j : givenNumbers) {
             sum += j;
         }
-        average = sum / 2;
+        average = sum / givenNumbers.length;
         System.out.println("The average value of given array is: " + average + "\n");
     }
 
     public void mergeArrays() {
-        System.out.println("Define the size of the first array:");
-        int[] firstArray = new int[scanner.nextInt()];
-        System.out.println("Define the size of the second array:");
-        int[] secondArray = new int[scanner.nextInt()];
-        int totalLength = firstArray.length + secondArray.length;
-        int[] mergedArray = new int[totalLength];
-        for (int i = 0; i < mergedArray.length; i++) {
-            mergedArray[i] = i;
+        int i = 0, j = 0, k = 0;
+        int[] firstArray = {1, 2, 3, 4};
+        int[] secondArray = {5, 6, 8, 12, 4};
+        int[] mergedArray = new int[firstArray.length + secondArray.length];
+        while (i < firstArray.length) {
+            mergedArray[k++] = firstArray[i++];
         }
-        System.out.println("So that looks the merged array: " + Arrays.toString(mergedArray) + "\n");
+        while (j < secondArray.length) {
+            mergedArray[k++] = secondArray[j++];
+        }
+        System.out.print("The merged arrays looks like this: ");
+        for (int elementOfMergedArray : mergedArray) {
+            System.out.print(elementOfMergedArray + " ");
+        }
     }
 
     public void findBiggestValueOfArray() {
