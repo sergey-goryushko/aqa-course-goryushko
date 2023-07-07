@@ -1,22 +1,17 @@
 package com.course.syntax;
 
-
 /* Requirements ->
  Manager object can be created, like user object, but additionally must have position value in process of creation.
  All additional fields must have getters and setters.
  Also, manager has the same method printUserInfo, like a user, but this method additionally print all additional fields of manager.*/
 public class Manager extends User {
-    public static void main(String[] args) {
-        Manager manager = new Manager("Tom Barton", "t@b.com", " ", "manager");
-        manager.printUserInfo();
-    }
 
     public Manager(String fullName, String email, String role, String position) {
         super(fullName, email, role);
         this.position = position;
     }
 
-    private String position = "manager";
+    private String position;
     private String responsibilityDistrict;
     private String workPhoneNumber;
 
@@ -26,12 +21,7 @@ public class Manager extends User {
 
     @Override
     public String toString() {
-        return super.toString() +
-                "Manager{" +
-                "position='" + position + '\'' +
-                ", responsibilityDistrict='" + responsibilityDistrict + '\'' +
-                ", workPhoneNumber='" + workPhoneNumber + '\'' +
-                "} ";
+        return super.toString() + "Manager{" + "position='" + position + '\'' + ", responsibilityDistrict='" + responsibilityDistrict + '\'' + ", workPhoneNumber='" + workPhoneNumber + '\'' + "} ";
     }
 
 

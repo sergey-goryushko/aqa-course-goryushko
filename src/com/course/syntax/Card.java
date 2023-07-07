@@ -1,6 +1,7 @@
 package com.course.syntax;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.regex.Pattern;
 
 public class Card {
     private int id;
@@ -8,6 +9,8 @@ public class Card {
     private String expireDate;
     private int cvv;
     private String cardType;
+
+    String regex = "^mastercard|visa$";
 
     public Integer getId() {
         return id;
@@ -43,7 +46,8 @@ public class Card {
 
     public Card(String number, String expireDate, int cvv, String cardType) {
         id = ThreadLocalRandom.current().nextInt(1, 10000);
-        if (cardType.equals("Visa") || cardType.equals("Master Card")) {
+        boolean result = Pattern.matches(regex, cardType);
+        if (result) {
             this.cardType = cardType;
         } else {
             System.out.println("The system takes only cards with Visa or Master Card types.");
@@ -55,12 +59,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "id=" + id +
-                ", number='" + number + '\'' +
-                ", expireDate='" + expireDate + '\'' +
-                ", cvv=" + cvv +
-                ", cardType='" + cardType + '\'' +
-                '}';
+        return "Card{" + "id=" + id + ", number='" + number + '\'' + ", expireDate='" + expireDate + '\'' + ", cvv=" + cvv + ", cardType='" + cardType + '\'' + '}';
     }
 }

@@ -4,50 +4,33 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class User {
-    public User() {
-    }
 
-    public static void main(String[] args) {
-        User user = new User();
-        user.setPhoneNumber("+1(555)555-1234");
-        user.setBillingAddress(String.valueOf(new Address("Spain", "Madrid", "Puerta del Sol", "1", "01-101")));
-        user.setDeliveryAddress(String.valueOf(new Address("Spain", "Madrid", "Puerta del Sol", "1", "01-101")));
-        user.getRole();
-        user.printUserInfo();
-    }
-    //    requirements ->
-    //    A User object must be created with values of fullName, email and role type or
-    //    firstName, lastName, email and role type.
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String fullName;
+    private String email;
+    private String phoneNumber;
+    private Address billingAddress;
+    private Address deliveryAddress;
+    private Roles role = new Roles("main customer");
+    private Manager manager;
+    private ArrayList<Card> cards = new ArrayList<>();
 
-    public User(String firstName, String lastName, String email, String role) {
+    public User(String firstName, String lastName, String email, Roles roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        Roles roles = new Roles(true, true, true, true);//it's admin type
-        this.role = roles.roleType;
+        this.role = roles;
         id = ThreadLocalRandom.current().nextInt(1, 10000);
     }
 
     public User(String fullName, String email, String role) {
         this.fullName = fullName;
         this.email = email;
-        Roles roles = new Roles(true, false, true, false);//it's customer type
-        this.role = roles.roleType;
         id = ThreadLocalRandom.current().nextInt(1, 10000);
     }
 
-
-    private int id;
-    private String firstName = "Andy";
-    private String lastName = "Cole";
-    private String fullName = "Andy Cole";
-    private String email = "a@c.gmail.com";
-    private String phoneNumber;
-    private String billingAddress;
-    private String deliveryAddress;
-    private String role;
-    private String manager;
-    private ArrayList<Card> cards = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -73,11 +56,11 @@ public class User {
         return phoneNumber;
     }
 
-    public String getBillingAddress() {
+    public Address getBillingAddress() {
         return billingAddress;
     }
 
-    public String getDeliveryAddress() {
+    public Address getDeliveryAddress() {
         return deliveryAddress;
     }
 
@@ -85,13 +68,11 @@ public class User {
         return cards;
     }
 
-    public String getRole() {
-        Roles roles = new Roles(true, true, true, false);//it's main customer type
-        this.role = roles.roleType;
+    public Roles getRole() {
         return role;
     }
 
-    public String getManager() {
+    public Manager getManager() {
         return manager;
     }
 
@@ -105,11 +86,11 @@ public class User {
         }
     }
 
-    public void setBillingAddress(String billingAddress) {
+    public void setBillingAddress(Address billingAddress) {
         this.billingAddress = billingAddress;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
+    public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
 
@@ -117,7 +98,7 @@ public class User {
         this.cards.add(card);
     }
 
-    public void setManager(String manager) {
+    public void setManager(Manager manager) {
         this.manager = manager;
     }
 
@@ -128,16 +109,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", billingAddress='" + billingAddress + '\'' +
-                ", deliveryAddress='" + deliveryAddress + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+        return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", fullName='" + fullName + '\'' + ", email='" + email + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", billingAddress='" + billingAddress + '\'' + ", deliveryAddress='" + deliveryAddress + '\'' + ", role='" + role + '\'' + '}';
     }
 }
 
