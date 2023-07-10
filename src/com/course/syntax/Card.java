@@ -41,7 +41,12 @@ public class Card {
     }
 
     public void setCardType(String cardType) {
-        this.cardType = cardType;
+        boolean result = Pattern.matches(regex, cardType);
+        if (result) {
+            this.cardType = cardType;
+        } else {
+            System.out.println("The system takes only cards with Visa or Master Card types.");
+        }
     }
 
     public Card(String number, String expireDate, int cvv, String cardType) {

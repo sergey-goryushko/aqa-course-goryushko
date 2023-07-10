@@ -13,7 +13,7 @@ public class User {
     private String phoneNumber;
     private Address billingAddress;
     private Address deliveryAddress;
-    private Roles role = new Roles("main customer");
+    private Roles role;
     private Manager manager;
     private ArrayList<Card> cards = new ArrayList<>();
 
@@ -25,9 +25,10 @@ public class User {
         id = ThreadLocalRandom.current().nextInt(1, 10000);
     }
 
-    public User(String fullName, String email, String role) {
+    public User(String fullName, String email, Roles roles) {
         this.fullName = fullName;
         this.email = email;
+        this.role = roles;
         id = ThreadLocalRandom.current().nextInt(1, 10000);
     }
 
