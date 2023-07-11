@@ -6,8 +6,8 @@ package com.course.syntax;
  Also, manager has the same method printUserInfo, like a user, but this method additionally print all additional fields of manager.*/
 public class Manager extends User {
 
-    public Manager(String fullName, String email, String role, String position) {
-        super(fullName, email, role);
+    public Manager(String fullName, String email, Roles roles, String position) {
+        super(fullName, email, roles);
         this.position = position;
     }
 
