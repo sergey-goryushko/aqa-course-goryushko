@@ -80,10 +80,15 @@ public class User {
     //requirement -> In process of setting phoneNumber value it must start from + symbol, if not - print an error message.
     public void setPhoneNumber(String phoneNumber) {
         String symbol = "+";
-        if (phoneNumber.startsWith(symbol)) {
-            this.phoneNumber = phoneNumber;
-        } else {
-            System.out.println("The error occurs. You need to add + symbol in front of a phone number.");
+        try {
+            if (phoneNumber.startsWith(symbol)) {
+                this.phoneNumber = phoneNumber;
+                System.out.println("Your phone number was saved successfully.");
+            } else {
+                throw new CheckFormatPhone("The error occurs. You need to add + symbol in front of a phone number.");
+            }
+        } catch (CheckFormatPhone e) {
+            e.printStackTrace();
         }
     }
 
