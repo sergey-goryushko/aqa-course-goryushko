@@ -15,7 +15,7 @@ public class Manager extends User {
     private String responsibilityDistrict;
     private String workPhoneNumber;
 
-    void printUserInfo() {
+    public void printInfo() {
         System.out.println(super.toString() + this.toString());
     }
 

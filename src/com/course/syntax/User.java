@@ -3,7 +3,7 @@ package com.course.syntax;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class User {
+public class User implements PrintInfo {
 
     private int id;
     private String firstName;
@@ -16,6 +16,18 @@ public class User {
     private Roles role;
     private Manager manager;
     private ArrayList<Card> cards = new ArrayList<>();
+
+    public void printAllCards() {
+        cards.forEach(card -> {
+            System.out.println(card.getNumber());
+        });
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println(toString());
+    }
+
 
     public User(String firstName, String lastName, String email, Roles roles) {
         this.firstName = firstName;
@@ -106,11 +118,6 @@ public class User {
 
     public void setManager(Manager manager) {
         this.manager = manager;
-    }
-
-
-    void printUserInfo() {
-        System.out.print(toString());
     }
 
     @Override
