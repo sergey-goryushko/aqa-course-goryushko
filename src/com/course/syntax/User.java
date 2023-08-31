@@ -13,7 +13,7 @@ public class User implements PrintInfo {
     private String phoneNumber;
     private Address billingAddress;
     private Address deliveryAddress;
-    private Roles role;
+    private Roles.UserRoles UserRoles;
     private Manager manager;
     private ArrayList<Card> cards = new ArrayList<>();
 
@@ -29,18 +29,18 @@ public class User implements PrintInfo {
     }
 
 
-    public User(String firstName, String lastName, String email, Roles roles) {
+    public User(String firstName, String lastName, String email, Roles.UserRoles userRoles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.role = roles;
+        this.UserRoles = userRoles;
         id = ThreadLocalRandom.current().nextInt(1, 10000);
     }
 
-    public User(String fullName, String email, Roles roles) {
+    public User(String fullName, String email, Roles.UserRoles userRoles) {
         this.fullName = fullName;
         this.email = email;
-        this.role = roles;
+        this.UserRoles = userRoles;
         id = ThreadLocalRandom.current().nextInt(1, 10000);
     }
 
@@ -81,8 +81,8 @@ public class User implements PrintInfo {
         return cards;
     }
 
-    public Roles getRole() {
-        return role;
+    public Roles.UserRoles getUserRoles() {
+        return UserRoles;
     }
 
     public Manager getManager() {
@@ -122,7 +122,7 @@ public class User implements PrintInfo {
 
     @Override
     public String toString() {
-        return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", fullName='" + fullName + '\'' + ", email='" + email + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", billingAddress='" + billingAddress + '\'' + ", deliveryAddress='" + deliveryAddress + '\'' + ", role='" + role + '\'' + '}';
+        return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", fullName='" + fullName + '\'' + ", email='" + email + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", billingAddress='" + billingAddress + '\'' + ", deliveryAddress='" + deliveryAddress + '\'' + ", role='" + UserRoles + '\'' + '}';
     }
 }
 

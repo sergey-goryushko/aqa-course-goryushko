@@ -12,23 +12,8 @@ public class Card {
 
     String regex = "^MASTERCARD|VISA$";
 
-    public enum PaymentGateways implements CharSequence {
+    public enum PaymentGateways {
         MASTERCARD, VISA;
-
-        @Override
-        public int length() {
-            return 0;
-        }
-
-        @Override
-        public char charAt(int index) {
-            return 0;
-        }
-
-        @Override
-        public CharSequence subSequence(int start, int end) {
-            return null;
-        }
     }
 
     public Integer getId() {
@@ -59,7 +44,7 @@ public class Card {
         this.cvv = cvv;
     }
 
-    public void setCardType(String cardType) {
+    public void setCardType(PaymentGateways paymentGateways) {
         boolean result = Pattern.matches(regex, cardType);
         if (result) {
             this.cardType = cardType;
@@ -71,11 +56,6 @@ public class Card {
 
     public Card(String number, String expireDate, int cvv, PaymentGateways paymentGateways) {
         id = ThreadLocalRandom.current().nextInt(1, 10000);
-        if (paymentGateways.equals(PaymentGateways.MASTERCARD) || paymentGateways.equals(PaymentGateways.VISA)) {
-            this.cardType = paymentGateways.name();
-        } else {
-            System.out.println("The system takes only cards with Visa or Master Card types.");
-        }
         this.number = number;
         this.expireDate = expireDate;
         this.cvv = cvv;

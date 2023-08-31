@@ -8,10 +8,7 @@ public class Roles {
         VIEWER;
 
     }
-    private String admin = "admin";
-    private String mainCustomer = "main customer";
-    private String customer = "customer";
-    private String viewer = "viewer";
+    private UserRoles role;
     private boolean viewAll;
     private boolean editAll;
     private boolean addAll;
@@ -56,6 +53,7 @@ public class Roles {
             this.addAll = false;
             this.deleteAll = false;
         }
+        role = userRoles;
     }
 
     @Override
