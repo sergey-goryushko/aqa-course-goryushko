@@ -11,6 +11,6 @@ public class Helper {
         //Broker broker = new Broker("Piotr", "piotr@gmail.com", "+48 123 456 789");
         //System.out.println(broker);
         //user.printInfo();
-        user.printAllCards();
+        //user.printAllCards();
     }
 }

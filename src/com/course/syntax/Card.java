@@ -8,9 +8,7 @@ public class Card {
     private String number;
     private String expireDate;
     private int cvv;
-    private String cardType;
-
-    String regex = "^MASTERCARD|VISA$";
+    private PaymentGateways cardType;
 
     public enum PaymentGateways {
         MASTERCARD, VISA;
@@ -45,12 +43,7 @@ public class Card {
     }
 
     public void setCardType(PaymentGateways paymentGateways) {
-        boolean result = Pattern.matches(regex, cardType);
-        if (result) {
-            this.cardType = cardType;
-        } else {
-            System.out.println("The system takes only cards with Visa or Master Card types.");
-        }
+            cardType = paymentGateways;
     }
 
 
