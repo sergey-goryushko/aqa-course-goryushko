@@ -8,9 +8,11 @@ public class Card {
     private String number;
     private String expireDate;
     private int cvv;
-    private String cardType;
+    private PaymentGateways cardType;
 
-    String regex = "^mastercard|visa$";
+    public enum PaymentGateways {
+        MASTERCARD, VISA;
+    }
 
     public Integer getId() {
         return id;
@@ -40,23 +42,13 @@ public class Card {
         this.cvv = cvv;
     }
 
-    public void setCardType(String cardType) {
-        boolean result = Pattern.matches(regex, cardType);
-        if (result) {
-            this.cardType = cardType;
-        } else {
-            System.out.println("The system takes only cards with Visa or Master Card types.");
-        }
+    public void setCardType(PaymentGateways paymentGateways) {
+            cardType = paymentGateways;
     }
 
-    public Card(String number, String expireDate, int cvv, String cardType) {
+
+    public Card(String number, String expireDate, int cvv, PaymentGateways paymentGateways) {
         id = ThreadLocalRandom.current().nextInt(1, 10000);
-        boolean result = Pattern.matches(regex, cardType);
-        if (result) {
-            this.cardType = cardType;
-        } else {
-            System.out.println("The system takes only cards with Visa or Master Card types.");
-        }
         this.number = number;
         this.expireDate = expireDate;
         this.cvv = cvv;

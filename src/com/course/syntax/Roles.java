@@ -1,10 +1,14 @@
 package com.course.syntax;
 
 public class Roles {
-    private String admin = "admin";
-    private String mainCustomer = "main customer";
-    private String customer = "customer";
-    private String viewer = "viewer";
+    public enum UserRoles {
+        ADMIN,
+        CUSTOMER,
+        MAIN_CUSTOMER,
+        VIEWER;
+
+    }
+    private UserRoles role;
     private boolean viewAll;
     private boolean editAll;
     private boolean addAll;
@@ -27,28 +31,29 @@ public class Roles {
     }
 
 
-    public Roles(String roleType) {
-        if (roleType.equals(admin)) {
+    public Roles(UserRoles userRoles) {
+        if (userRoles.equals(UserRoles.ADMIN)) {
             this.viewAll = true;
             this.editAll = true;
             this.addAll = true;
             this.deleteAll = true;
-        } else if (roleType.equals(mainCustomer)) {
+        } else if (userRoles.equals(UserRoles.MAIN_CUSTOMER)) {
             this.viewAll = true;
             this.editAll = true;
             this.addAll = true;
             this.deleteAll = false;
-        } else if (roleType.equals(customer)) {
+        } else if (userRoles.equals(UserRoles.CUSTOMER)) {
             this.viewAll = true;
             this.editAll = false;
             this.addAll = true;
             this.deleteAll = false;
-        } else if (roleType.equals(viewer)) {
+        } else if (userRoles.equals(UserRoles.VIEWER)) {
             this.viewAll = true;
             this.editAll = false;
             this.addAll = false;
             this.deleteAll = false;
         }
+        role = userRoles;
     }
 
     @Override

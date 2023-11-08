@@ -3,7 +3,7 @@ package com.course.syntax;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class User {
+public class User implements PrintInfo {
 
     private int id;
     private String firstName;
@@ -13,22 +13,34 @@ public class User {
     private String phoneNumber;
     private Address billingAddress;
     private Address deliveryAddress;
-    private Roles role;
+    private Roles.UserRoles UserRoles;
     private Manager manager;
     private ArrayList<Card> cards = new ArrayList<>();
 
-    public User(String firstName, String lastName, String email, Roles roles) {
+    public void printAllCards() {
+        cards.forEach(card -> {
+            System.out.println(card.getNumber());
+        });
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println(toString());
+    }
+
+
+    public User(String firstName, String lastName, String email, Roles.UserRoles userRoles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.role = roles;
+        this.UserRoles = userRoles;
         id = ThreadLocalRandom.current().nextInt(1, 10000);
     }
 
-    public User(String fullName, String email, Roles roles) {
+    public User(String fullName, String email, Roles.UserRoles userRoles) {
         this.fullName = fullName;
         this.email = email;
-        this.role = roles;
+        this.UserRoles = userRoles;
         id = ThreadLocalRandom.current().nextInt(1, 10000);
     }
 
@@ -69,8 +81,8 @@ public class User {
         return cards;
     }
 
-    public Roles getRole() {
-        return role;
+    public Roles.UserRoles getUserRoles() {
+        return UserRoles;
     }
 
     public Manager getManager() {
@@ -80,10 +92,15 @@ public class User {
     //requirement -> In process of setting phoneNumber value it must start from + symbol, if not - print an error message.
     public void setPhoneNumber(String phoneNumber) {
         String symbol = "+";
-        if (phoneNumber.startsWith(symbol)) {
-            this.phoneNumber = phoneNumber;
-        } else {
-            System.out.println("The error occurs. You need to add + symbol in front of a phone number.");
+        try {
+            if (phoneNumber.startsWith(symbol)) {
+                this.phoneNumber = phoneNumber;
+                System.out.println("Your phone number was saved successfully.");
+            } else {
+                throw new CheckFormatPhone("The error occurs. You need to add + symbol in front of a phone number.");
+            }
+        } catch (CheckFormatPhone e) {
+            e.printStackTrace();
         }
     }
 
@@ -103,14 +120,9 @@ public class User {
         this.manager = manager;
     }
 
-
-    void printUserInfo() {
-        System.out.print(toString());
-    }
-
     @Override
     public String toString() {
-        return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", fullName='" + fullName + '\'' + ", email='" + email + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", billingAddress='" + billingAddress + '\'' + ", deliveryAddress='" + deliveryAddress + '\'' + ", role='" + role + '\'' + '}';
+        return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", fullName='" + fullName + '\'' + ", email='" + email + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", billingAddress='" + billingAddress + '\'' + ", deliveryAddress='" + deliveryAddress + '\'' + ", role='" + UserRoles + '\'' + '}';
     }
 }
 
